@@ -1,4 +1,4 @@
 statuspi.py
 ===========
 
-A simple headless status box utility for the Raspberry Pi.  
+A simple headless status box utility for the Raspberry Pi.
