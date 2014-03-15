@@ -15,17 +15,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import RPi.GPIO as GPIO
-import subprocess, time
+import subprocess, time, sys
+
+def usage():
+    print "usage: sudo python statuspi.py <script to run>"
+    GPIO.cleanup()
+    sys.exit()
 
 GPIO.setmode(GPIO.BCM)
+
+if len(sys.argv) != 2:
+    usage();
 
 # connect LED on pin 18
 GPIO.setup(18, GPIO.OUT)
 
 while True:
-	if subprocess.call(["python", "/home/joe/Documents/sbtest.py"]) == 1:
-		GPIO.output(18, True)
-	else:
-		GPIO.output(18, False)
+    if subprocess.call(["python", sys.argv[1]]) == 1:
+        GPIO.output(18, True)
+    else:
+        GPIO.output(18, False)
 
-	time.sleep(5)
+    time.sleep(5)
+
