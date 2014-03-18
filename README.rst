@@ -1,3 +1,4 @@
+===========
 statuspi.py
 ===========
 
@@ -7,7 +8,7 @@ under the GPL.
 Setup
 -----
 
-Download the script, then install the GPIO library:
+Download the script, then install the GPIO library::
 
     sudo pip install rpi.gpio
 
@@ -26,7 +27,7 @@ Usage
 -----
 
 This script **must** be run as su, or the GPIO library won't be able to
-access the hardware correctly.  Usage is as follows:
+access the hardware correctly.  Usage is as follows::
 
     sudo python statuspi.py <your script>
 
@@ -41,4 +42,4 @@ To do
 License
 -------
 
-statuspi.py is licensed under the GPLv3.  See `LICENSE` for details.
+statuspi.py is licensed under the GPLv3.  See 'LICENSE' for details.
