@@ -19,6 +19,9 @@ import subprocess, time, sys
 
 def usage():
     print "usage: sudo python statuspi.py <cfg_file>"
+    print "      the first line of the configuration file will be executed"
+    print "      as a python script every five seconds; on a return code of"
+    print "      1, the LED will illuminate.  otherwise, the LED will turn off."
     GPIO.cleanup()
     sys.exit()
 
