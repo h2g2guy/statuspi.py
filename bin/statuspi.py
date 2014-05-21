@@ -18,7 +18,7 @@ import RPi.GPIO as GPIO
 import subprocess, time, sys
 
 def usage():
-    print "usage: sudo python statuspi.py <script to run>"
+    print "usage: sudo python statuspi.py <cfg_file>"
     GPIO.cleanup()
     sys.exit()
 
@@ -27,11 +27,14 @@ GPIO.setmode(GPIO.BCM)
 if len(sys.argv) != 2:
     usage();
 
+with open(sys.argv[1]) as f:
+    line = f.readline()[:-1];
+
 # connect LED on pin 18
 GPIO.setup(18, GPIO.OUT)
 
 while True:
-    if subprocess.call(["python", sys.argv[1]]) == 1:
+    if subprocess.call(["python", line]) == 1:
         GPIO.output(18, True)
     else:
         GPIO.output(18, False)
