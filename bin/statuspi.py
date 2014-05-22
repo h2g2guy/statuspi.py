@@ -32,15 +32,25 @@ if len(sys.argv) != 2:
 
 with open(sys.argv[1]) as f:
     line = f.readline()[:-1];
+    line2 = f.readline()
+    if line2 is not None:
+        line2 = line2[:-1]
 
 # connect LED on pin 18
 GPIO.setup(18, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
 
 while True:
     if subprocess.call(["python", line]) == 1:
         GPIO.output(18, True)
     else:
         GPIO.output(18, False)
+
+    if line2 is not "" and line2 is not None and line2 is not '':
+        if subprocess.call(["python", line2]) == 1:
+            GPIO.output(23, True)
+        else:
+            GPIO.output(23, False)
 
     time.sleep(5)
 
